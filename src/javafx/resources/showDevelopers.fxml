@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.showDevelopersController">
+   <center>
+      <TableView prefHeight="339.0" prefWidth="600.0" BorderPane.alignment="CENTER" fx:id="devTab">
+      </TableView>
+   </center>
+   <top>
+      <HBox prefHeight="39.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="94.0" text="Back to menu" fx:id="BackBtn" onAction="#frontpage"/>
+            <TextField alignment="CENTER" prefHeight="39.0" prefWidth="510.0" text="Search field" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
