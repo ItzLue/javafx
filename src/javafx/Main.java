@@ -6,10 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
+
         Parent root = FXMLLoader.load(getClass().getResource("resources/frontPage.fxml"));
         primaryStage.setTitle("SoftwareHuset A/S");
         primaryStage.setScene(new Scene(root));

@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -19,6 +20,7 @@ import java.util.ResourceBundle;
 
 public class showDevelopersController implements Initializable {
 
+    public ObservableList<Devs> data;
 
     @FXML
     private TableView<Devs> devTab;
@@ -44,12 +46,35 @@ public class showDevelopersController implements Initializable {
 
         var emp1 = new Devs(firstnameField.getText(),lastnameField.getText());
 
-        System.out.println(emp1.firstName() + " " + emp1.lastName() + " " + emp1.id() + " " + emp1.hashCode() );
+        System.out.println(emp1.firstName() + " " + emp1.lastName() + " " + emp1.id() + " " + emp1.hashCode());
+
+         data = FXCollections.observableArrayList(
+                new Devs(emp1.firstName(), emp1.lastName())
+        );
+
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        TableColumn firstNameCol = new TableColumn("First Name");
+        TableColumn lastNameCol = new TableColumn("Last Name");
+        TableColumn idCol = new TableColumn("id");
+
+        devTab.getColumns().addAll(firstNameCol,lastNameCol,idCol);
+
+        firstNameCol.setCellValueFactory(
+                new PropertyValueFactory<Devs, String>("firstName"));
+
+        lastNameCol.setCellValueFactory(
+                new PropertyValueFactory<Devs, String>("lastName"));
+
+        idCol.setCellValueFactory(
+                new PropertyValueFactory<Devs, String>("id"));
+
+        devTab.setItems(data);
+        devTab.getColumns().addAll(firstNameCol, lastNameCol, idCol);
 
     }
 
