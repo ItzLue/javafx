@@ -1,13 +1,11 @@
 package Data;
 
-public class Developers {
+public class Developer {
 
 
-    private String firstName = null;
-    private String lastName = null;
-    private String id = null;
+    private String firstName,lastName,id;
 
-    public Developers(String firstName, String lastName, String id) {
+    public Developer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = firstName.toUpperCase().substring(0,2) + lastName.toUpperCase().substring(0,2);

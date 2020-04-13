@@ -16,62 +16,16 @@ import java.util.ResourceBundle;
 public class frontPageController implements Initializable {
 
     @FXML
-    private Button AddDeveloperBtn, ShowProjectsBtn, CreateProjectBtn, ShowDeveloperBtn,Back;
-
-
-    @FXML
-    public void addDeveloperScene(ActionEvent event) throws Exception {
-
-        // Load fxml file and set scene
-        Parent addDeveloperParent = FXMLLoader.load(getClass().getResource("resources/addDeveloper.fxml"));
-        Scene addDeveloperScene = new Scene(addDeveloperParent);
-
-        // Stage information
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(addDeveloperScene);
-        window.show();
-    }
-
-    @FXML
-    public void createProjectScene(ActionEvent event) throws Exception {
-
-        // Load fxml file and set scene
-        Parent addDeveloperParent = FXMLLoader.load(getClass().getResource("resources/createProject.fxml"));
-        Scene addDeveloperScene = new Scene(addDeveloperParent);
-
-        // Stage information
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(addDeveloperScene);
-        window.show();
-    }
-
-    @FXML
     public void showDevelopersScene(ActionEvent event) throws Exception {
 
         // Load fxml file and set scene
-        Parent addDeveloperParent = FXMLLoader.load(getClass().getResource("resources/showDevelopers.fxml"));
-        Scene addDeveloperScene = new Scene(addDeveloperParent);
+        Parent showDeveloperParent = FXMLLoader.load(getClass().getResource("resources/showDevelopers.fxml"));
+        Scene showDeveloperScene = new Scene(showDeveloperParent);
 
         // Stage information
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
-        window.setScene(addDeveloperScene);
-        window.show();
-    }
-
-    @FXML
-    public void showProjectScene(ActionEvent event) throws Exception {
-
-        // Load fxml file and set scene
-        Parent addDeveloperParent = FXMLLoader.load(getClass().getResource("resources/showProject.fxml"));
-        Scene addDeveloperScene = new Scene(addDeveloperParent);
-
-        // Stage information
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(addDeveloperScene);
+        window.setScene(showDeveloperScene);
         window.show();
     }
 

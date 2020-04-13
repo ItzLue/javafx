@@ -11,9 +11,9 @@
    <center>
       <TableView prefHeight="339.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="First Name" />
-          <TableColumn prefWidth="75.0" text="Last Name" />
-            <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="75.0" text="Project name" />
+          <TableColumn prefWidth="75.0" text="Project id" />
+            <TableColumn prefWidth="75.0" text="Start date" />
         </columns>
       </TableView>
    </center>

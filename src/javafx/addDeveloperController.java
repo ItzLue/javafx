@@ -1,7 +1,5 @@
 package javafx;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,19 +7,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import Data.*;
 
 public class addDeveloperController implements Initializable {
 
     @FXML
     public TextField firstnameField,lastnameField;
+
+   @FXML
+   private TableView<Developer> devTab;
 
 
     @FXML
@@ -38,19 +37,33 @@ public class addDeveloperController implements Initializable {
         window.show();
     }
     @FXML
-    public void register(ActionEvent event) throws Exception{
+    public void registerDeveloper() throws Exception{
 
+
+        Developer newDeveloper = new Developer(firstnameField.getText(),
+                                            lastnameField.getText());
+
+        System.out.println(firstnameField.getText() + " " + lastnameField.getText());
+
+        devTab.getItems().add(newDeveloper);
+    }
+
+    @FXML
+    public void firstNameDeveloper() throws Exception{
+
+        firstnameField.getText();
         System.out.println(firstnameField.getText());
+    }
+
+    @FXML
+    public void lastNameDeveloper() throws Exception{
+        lastnameField.getText();
         System.out.println(lastnameField.getText());
-
-            var emp1 = new Devs(firstnameField.getText(),lastnameField.getText());
-
-
-
-        System.out.println(emp1.id());
     }
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+
+    @FXML
+    public void initialize(URL url, ResourceBundle rb){
 
     }
+
 }
