@@ -2,7 +2,9 @@ package javafx;
 
 import Data.Developer;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -16,8 +18,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,12 +41,14 @@ public class DeveloperTable implements Initializable {
     private TextField firstNameTextField;
     @FXML
     private TextField lastNameTextField;
+    @FXML
+    ObservableList<Developer> developer = FXCollections.observableArrayList();
+
 
     // Search bar
 
     @FXML
     private TextField searchBar;
-
 
 
     public void changeScreenButtonPushed(ActionEvent event) throws IOException {
@@ -57,6 +61,7 @@ public class DeveloperTable implements Initializable {
 
         window.setScene(showDeveloperScene);
         window.show();
+        System.out.println(developer);
     }
 
     public void changeFirstNameCellEvent(TableColumn.CellEditEvent cellEditEvent) {
@@ -70,10 +75,7 @@ public class DeveloperTable implements Initializable {
     }
 
     public void newDeveloperButtonPushed(ActionEvent event) {
-        Developer newDeveloper = new Developer(firstNameTextField.getText(),
-                lastNameTextField.getText());
-
-        devTab.getItems().add(newDeveloper);
+        developer.add(new Developer(firstNameTextField.getText(), lastNameTextField.getText()));
     }
 
     public void deleteButtonPushed(ActionEvent event) {
@@ -88,19 +90,21 @@ public class DeveloperTable implements Initializable {
         for (Developer developer : selectedRows) {
             allDevelopers.remove(developer);
         }
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        devTab.setEditable(true);
 
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Developer, String>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<Developer, String>("lastName"));
         idCol.setCellValueFactory(new PropertyValueFactory<Developer, String>("id"));
 
         // Example list
+        //devTab.setItems(getDevelopers());
 
-        devTab.setItems(getDevelopers());
+        // Update list
 
 
         FilteredList<Developer> filteredList = new FilteredList<Developer>(getDevelopers(), b -> true);
@@ -108,22 +112,21 @@ public class DeveloperTable implements Initializable {
         searchBar.textProperty().addListener(((observableValue, oldValue, newValue) -> {
             filteredList.setPredicate(developer -> {
                 // if empty
-                if (newValue == null || newValue.isEmpty()){
+                if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
                 // Compare names
                 String lowerCaseFilter = newValue.toLowerCase();
 
-            if (developer.getFirstName().toLowerCase().contains(lowerCaseFilter)){
-                return true;
-            } else if (developer.getLastName().toLowerCase().contains(lowerCaseFilter)){
-                return true;
-            } else if (developer.getId().toLowerCase().contains(lowerCaseFilter)){
-                return true;
-            } else{
-                return false;
-            }
+                if (developer.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (developer.getLastName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else if (developer.getId().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                } else {
+                    return false;
+                }
             });
         }));
 
@@ -134,14 +137,10 @@ public class DeveloperTable implements Initializable {
         devTab.setItems(filteredList);
     }
 
-
-
-    public ObservableList<Developer> getDevelopers(){
-
-        ObservableList<Developer> developer = FXCollections.observableArrayList();
-        developer.add(new Developer("Frank","Hansen"));
-        developer.add(new Developer("Rebecca","Jensen"));
-        developer.add(new Developer("Jonas","Tang"));
+    public ObservableList<Developer> getDevelopers() {
+        developer.add(new Developer("Frank", "Hansen"));
+        developer.add(new Developer("Rebecca", "Jensen"));
+        developer.add(new Developer("Jonas", "Tang"));
         return developer;
     }
 }

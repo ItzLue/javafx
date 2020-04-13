@@ -4,6 +4,7 @@ public class Developer {
 
 
     private String firstName,lastName,id;
+    final boolean projectLeader = false;
 
     public Developer(String firstName, String lastName) {
         this.firstName = firstName;
@@ -33,5 +34,8 @@ public class Developer {
 
     public void setId(String id) {
         this.id = id;
+    }
+    public boolean isProjectLeader(){
+        return projectLeader;
     }
 }
