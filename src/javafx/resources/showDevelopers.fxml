@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.DeveloperTable">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.DeveloperTable">
    <children>
       <Button layoutX="551.0" layoutY="516.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" prefHeight="17.0" prefWidth="211.0" text="Go Back to Main menu" />
       <VBox layoutX="26.0" layoutY="19.0" prefHeight="281.0" prefWidth="542.0" spacing="10.0">
          <children>
-            <TableView fx:id="devTab" prefHeight="250.0" prefWidth="290.0">
+            <TableView fx:id="devTab">
                <columns>
                   <TableColumn fx:id="firstNameCol" onEditCommit="#changeFirstNameCellEvent" prefWidth="154" text="First Name" />
                   <TableColumn fx:id="lastNameCol" onEditCommit="#changeLastNameCellEvent" prefWidth="154.0" text="Last Name" />
@@ -27,8 +23,9 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#newDeveloperButtonPushed" prefWidth="175.0" text="Add New Person" />
-                  <Button mnemonicParsing="false" onAction="#deleteButtonPushed" prefWidth="175.0" text="Delete Person(s) " />
+                  <Button mnemonicParsing="false" onAction="#newDeveloperButtonPushed" prefWidth="175.0" text="Add New Developer" />
+                  <TextField fx:id="searchBar" text="Search" />
+                  <Button mnemonicParsing="false" onAction="#deleteButtonPushed" prefWidth="175.0" text="Delete Developer(s) " visible="false" />
                </children>
             </HBox>
          </children>

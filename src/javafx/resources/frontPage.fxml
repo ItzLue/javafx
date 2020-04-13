@@ -16,6 +16,10 @@
    <center>
       <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#showDevelopersScene" prefHeight="48.0" prefWidth="200" text="Show Developers" BorderPane.alignment="CENTER" />
    </center>
+   <left>
+      <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#showProjectScene" prefHeight="48.0" prefWidth="200" text="Show Projects" BorderPane.alignment="CENTER" />
+
+   </left>
    <padding>
       <Insets bottom="30.0" left="30.0" right="30.0" top="15.0" />
    </padding>

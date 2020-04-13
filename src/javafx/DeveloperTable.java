@@ -3,6 +3,8 @@ package javafx;
 import Data.Developer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,14 +16,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.ResourceBundle;
 
 public class DeveloperTable implements Initializable {
@@ -41,6 +39,12 @@ public class DeveloperTable implements Initializable {
     private TextField firstNameTextField;
     @FXML
     private TextField lastNameTextField;
+
+    // Search bar
+
+    @FXML
+    private TextField searchBar;
+
 
 
     public void changeScreenButtonPushed(ActionEvent event) throws IOException {
@@ -97,7 +101,40 @@ public class DeveloperTable implements Initializable {
         // Example list
 
         devTab.setItems(getDevelopers());
+
+
+        FilteredList<Developer> filteredList = new FilteredList<Developer>(getDevelopers(), b -> true);
+
+        searchBar.textProperty().addListener(((observableValue, oldValue, newValue) -> {
+            filteredList.setPredicate(developer -> {
+                // if empty
+                if (newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+
+                // Compare names
+                String lowerCaseFilter = newValue.toLowerCase();
+
+            if (developer.getFirstName().toLowerCase().contains(lowerCaseFilter)){
+                return true;
+            } else if (developer.getLastName().toLowerCase().contains(lowerCaseFilter)){
+                return true;
+            } else if (developer.getId().toLowerCase().contains(lowerCaseFilter)){
+                return true;
+            } else{
+                return false;
+            }
+            });
+        }));
+
+        SortedList<Developer> sortedData = new SortedList<Developer>(filteredList);
+
+        sortedData.comparatorProperty().bind(devTab.comparatorProperty());
+
+        devTab.setItems(filteredList);
     }
+
+
 
     public ObservableList<Developer> getDevelopers(){
 

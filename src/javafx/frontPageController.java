@@ -29,6 +29,21 @@ public class frontPageController implements Initializable {
         window.show();
     }
 
+    @FXML
+    public void showProjectScene(ActionEvent event) throws Exception{
+
+        // Load fxml file and set scene
+        Parent showDeveloperParent = FXMLLoader.load(getClass().getResource("resources/showProject.fxml"));
+        Scene showDeveloperScene = new Scene(showDeveloperParent);
+
+        // Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(showDeveloperScene);
+        window.show();
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
