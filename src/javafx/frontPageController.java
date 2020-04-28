@@ -1,5 +1,6 @@
 package javafx;
 
+import domain.Developer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,13 +11,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import System.App;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class frontPageController implements Initializable {
-
+App app;
     @FXML
     public void showDevelopersScene(ActionEvent event) throws Exception {
+
 
         // Load fxml file and set scene
         Parent showDeveloperParent = FXMLLoader.load(getClass().getResource("resources/showDevelopers.fxml"));

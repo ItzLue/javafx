@@ -23,9 +23,9 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#newDeveloperButtonPushed" prefWidth="175.0" text="Add New Developer" />
+                  <Button mnemonicParsing="false" onAction="#newDeveloperButtonPushed" prefWidth="175.0" text="Add New Developer" fx:id="addDev"/>
                   <TextField fx:id="searchBar" promptText="Search for a developer" />
-                  <Button mnemonicParsing="false" onAction="#deleteButtonPushed" prefWidth="175.0" text="Delete Developer(s) " visible="false" />
+                  <Button mnemonicParsing="false" onAction="#deleteButtonPushed" prefWidth="175.0" text="Delete Developer(s) "/>
                </children>
             </HBox>
          </children>

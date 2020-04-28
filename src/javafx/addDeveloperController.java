@@ -12,10 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
-import Data.*;
-
+import domain.*;
+import System.App;
 public class addDeveloperController implements Initializable {
 
+    App app;
     @FXML
     public TextField firstnameField,lastnameField;
 
@@ -39,13 +40,13 @@ public class addDeveloperController implements Initializable {
     @FXML
     public void registerDeveloper() throws Exception{
 
+        app.registerDeveloper(new Developer(firstnameField.getText(),lastnameField.getText()));
 
-        Developer newDeveloper = new Developer(firstnameField.getText(),
-                                            lastnameField.getText());
 
         System.out.println(firstnameField.getText() + " " + lastnameField.getText());
 
-        devTab.getItems().add(newDeveloper);
+        String ID = firstnameField.getText().toUpperCase().substring(0,2) + lastnameField.getText().toUpperCase().substring(0,2) + "01";
+        devTab.getItems().add(app.getDeveloperHM().get(ID));
     }
 
     @FXML
